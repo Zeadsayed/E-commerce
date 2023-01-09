@@ -1,0 +1,26 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand text-white" routerLink="/products">Market</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <input class="form-control me-2 w-25" type="search" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="Search" aria-label="Search">
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link " routerLink="/products" routerLinkActive="text-warning">Products</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="text-warning">
+            <i class="fas fa-cart-plus"></i>
+            <div class="badge bg-danger">{{total}}</div>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

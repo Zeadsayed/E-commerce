@@ -1,0 +1,29 @@
+
+.navbar {
+    background: linear-gradient(to right, #950b0b, #440606);
+
+    color: #fff !important;
+}
+.navbar-brand{
+    font-size: 30px;
+}
+
+.navbar .nav-link{
+    font-size: 20px;
+    color: #fff;
+}
+
+.navbar-toggler{
+    color: #fff !important;
+}
+
+.navbar-toggler-icon{
+    color: #fff !important;
+}
+
+.nav-item i{
+  font-size: 30px;
+}
+.nav-item .badge{
+  font-size: 10px; 
+}

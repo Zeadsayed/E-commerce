@@ -1,0 +1,35 @@
+<div class="box m-4 w-100 mx-auto p-2">
+  <div class="col-lg-9 col-md-12 col-sm-12 mx-auto ">
+    <div class="row" *ngIf="!loading">
+
+        <div class="col-lg-5 col-md-5 col-sm-6 my-auto mx-auto ">
+            <img src="{{data.image}}" class="w-100" alt="sas">
+        </div>
+
+        <div class="col-lg-7 col-md-7 col-sm-6 mt-3 ">
+
+          <h2 class="">{{data.title}} </h2>
+          <hr class="border border-dark ">
+
+          <h4><span >Category :</span> {{data.category}}</h4>
+          <hr class="border border-dark ">
+
+          <h4><span>Description :</span> {{data.description}}</h4>
+          <hr class="border border-dark ">
+
+          <h4><span>Rate : </span><i class='fas fa-star text-warning fa-xs'></i> {{data.rating.rate}}</h4>
+          <hr class="border border-dark ">
+
+          <h4><span>Count :</span> {{data.rating.count}}</h4>
+          <hr class="border border-dark ">
+
+          <h4><span>Price :</span> {{data.price}}</h4>
+
+        </div>
+    </div>
+  </div>
+ 
+    <div class="text-center">
+        <app-spinner *ngIf="loading"></app-spinner>
+    </div>
+</div>

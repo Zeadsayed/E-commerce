@@ -1,0 +1,18 @@
+.box img{
+    max-height: 400px;
+}
+
+.box h4{
+    color: rgb(56, 55, 55);
+    font-size: 22px;
+}
+
+.box h2{
+    color: rgb(165, 4, 4);
+
+}
+
+.box h4 span{
+    color: #000;
+    font-size: 25px;
+}

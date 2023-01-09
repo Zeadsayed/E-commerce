@@ -1,0 +1,6 @@
+
+<label for="" class="my-1"><i class="fa-brands fa-slack"></i> {{title}} </label>
+<select class="form-control text-capitalize" (change)="detectChanges($event)">
+    <option value="all" selected>All</option>
+    <option value="{{option}}" *ngFor="let option of data">{{option}}</option>
+</select>
