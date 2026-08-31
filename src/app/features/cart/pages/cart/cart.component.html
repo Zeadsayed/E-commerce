@@ -1,0 +1,68 @@
+<section class="cart-page">
+  <ng-container *ngIf="cartProducts$ | async as cartProducts">
+    <div class="page-heading">
+      <div>
+        <span class="eyebrow">Your selection</span>
+        <h1>Shopping cart</h1>
+        <p>{{ cartProducts.length }} {{ cartProducts.length === 1 ? 'item' : 'items' }} waiting for you</p>
+      </div>
+      <a class="continue-link" routerLink="/products"><i class="fa-solid fa-arrow-left"></i> Continue shopping</a>
+    </div>
+
+    <div class="alert alert-success success-message" role="alert" *ngIf="success">
+      <i class="fa-solid fa-circle-check"></i>
+      <div><strong>Order received!</strong><span>Your order was submitted successfully.</span></div>
+    </div>
+
+    <div class="empty-cart" *ngIf="!cartProducts.length">
+      <span class="empty-icon"><i class="fa-solid fa-cart-shopping"></i></span>
+      <h2>Your cart is empty</h2>
+      <p>Looks like you haven't added anything yet. Explore the collection and find your favorites.</p>
+      <a routerLink="/products">Start shopping <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="cart-layout" *ngIf="cartProducts.length">
+      <div class="cart-items">
+        <div class="items-header">
+          <h2>Cart items</h2>
+          <button type="button" (click)="clearCart()"><i class="fa-regular fa-trash-can"></i> Clear cart</button>
+        </div>
+
+        <article class="cart-item" *ngFor="let product of cartProducts">
+          <a class="item-image" [routerLink]="['/details', product.item.id]">
+            <img [src]="product.item.image" [alt]="product.item.title">
+          </a>
+          <div class="item-details">
+            <span>{{ product.item.category }}</span>
+            <a [routerLink]="['/details', product.item.id]">{{ product.item.title }}</a>
+            <strong>{{ product.item.price | number:'1.2-2' }} L.E</strong>
+          </div>
+          <div class="quantity-control" aria-label="Product quantity">
+            <button type="button" (click)="minsAmount(product.item.id)" aria-label="Decrease quantity">-</button>
+            <input type="number" (change)="updateQuantity(product.item.id, $event)" [value]="product.quantity" min="1"
+              aria-label="Quantity">
+            <button type="button" (click)="addAmount(product.item.id)" aria-label="Increase quantity">+</button>
+          </div>
+          <strong class="line-total">{{ product.item.price * product.quantity | number:'1.2-2' }} L.E</strong>
+          <button class="remove-button" type="button" (click)="deleteProduct(product.item.id)"
+            aria-label="Remove product">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </article>
+      </div>
+
+      <aside class="order-summary">
+        <span class="summary-label">Order summary</span>
+        <h2>Ready to checkout?</h2>
+        <div class="summary-row"><span>Subtotal</span><strong>{{ total$ | async | number:'1.2-2' }} L.E</strong></div>
+        <div class="summary-row"><span>Delivery</span><strong class="free">Free</strong></div>
+        <div class="summary-total"><span>Total</span><strong>{{ total$ | async | number:'1.2-2' }} L.E</strong></div>
+        <button class="checkout-button" type="button" (click)="addCart()">
+          <i class="fa-solid" [ngClass]="isAuthenticated ? 'fa-lock' : 'fa-right-to-bracket'"></i>
+          {{ isAuthenticated ? 'Place order' : 'Login to checkout' }}
+        </button>
+        <p class="secure-note"><i class="fa-solid fa-shield-halved"></i> Your checkout is protected</p>
+      </aside>
+    </div>
+  </ng-container>
+</section>

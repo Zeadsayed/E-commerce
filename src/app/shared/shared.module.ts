@@ -1,36 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'
-import { BrowserModule } from '@angular/platform-browser';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-import { SelectComponent } from './components/slect/slect.component';
+import { SpinnerComponent } from './ui/spinner/spinner.component';
+import { SelectComponent } from './ui/select/select.component';
 import { FormsModule } from '@angular/forms';
-import { FilterPipe } from './filter.pipe';
-
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    SpinnerComponent,
-    SelectComponent,
-    FilterPipe
-  ],
-  imports: [
+  declarations: [SpinnerComponent, SelectComponent],
+  imports: [CommonModule, FormsModule, RouterModule],
+  exports: [
     CommonModule,
-    BrowserModule ,
-    FormsModule,
-    RouterModule,
-    HttpClientModule
-  ],
-  exports : [
-    HeaderComponent,
-    BrowserModule ,
     SpinnerComponent,
     RouterModule,
     FormsModule,
-    SelectComponent
-  ]
+    SelectComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

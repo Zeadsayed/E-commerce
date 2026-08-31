@@ -1,0 +1,151 @@
+:host {
+  display: block;
+}
+
+.register-page {
+  display: grid;
+  min-height: calc(100vh - 82px);
+  place-items: center;
+  padding: 48px 16px;
+  background: linear-gradient(135deg, #fff7f7 0%, #ffffff 50%, #f8eded 100%);
+}
+
+.register-card {
+  width: min(100%, 500px);
+  padding: 36px;
+  border: 1px solid #eadede;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 20px 55px rgba(68, 6, 6, 0.12);
+}
+
+.register-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.user-icon {
+  display: grid;
+  flex: 0 0 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 14px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #b31313, #440606);
+  font-size: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 3px;
+  color: #950b0b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: #2a2222;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.register-copy {
+  margin: 0 0 28px;
+  color: #6f6464;
+  line-height: 1.6;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #3c3333;
+  font-weight: 600;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap > i {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  z-index: 1;
+  color: #a89595;
+  transform: translateY(-50%);
+}
+
+.form-control {
+  min-height: 48px;
+  padding-left: 42px;
+  border-color: #dfd4d4;
+  border-radius: 10px;
+}
+
+.form-control:focus {
+  border-color: #950b0b;
+  box-shadow: 0 0 0 0.2rem rgba(149, 11, 11, 0.12);
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  border: 0;
+  color: #776b6b;
+  background: transparent;
+  transform: translateY(-50%);
+}
+
+.validation-message {
+  display: block;
+  margin-top: 6px;
+  color: #b31313;
+}
+
+.register-button {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: 10px;
+  color: #ffffff;
+  background: linear-gradient(to right, #950b0b, #440606);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.register-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.auth-switch {
+  margin: 22px 0 0;
+  color: #6f6464;
+  text-align: center;
+}
+
+.auth-switch a {
+  color: #950b0b;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 575px) {
+  .register-card {
+    padding: 26px 20px;
+  }
+
+  h1 {
+    font-size: 23px;
+  }
+}

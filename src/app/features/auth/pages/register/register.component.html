@@ -1,0 +1,73 @@
+<section class="register-page">
+  <div class="register-card">
+    <div class="register-heading">
+      <span class="user-icon" aria-hidden="true"><i class="fa-solid fa-user-plus"></i></span>
+      <div>
+        <p class="eyebrow">Join Market</p>
+        <h1>Create your account</h1>
+      </div>
+    </div>
+
+    <p class="register-copy">Create an account now so you can securely complete checkout.</p>
+
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <form #registerForm="ngForm" (ngSubmit)="register()" novalidate>
+      <div class="form-group">
+        <label for="register-username">Username</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          <input id="register-username" name="username" class="form-control" type="text" autocomplete="username"
+            placeholder="Choose a username" [(ngModel)]="user.username" #username="ngModel" minlength="3" required>
+        </div>
+        <small class="validation-message" *ngIf="username.invalid && username.touched">Enter at least 3
+          characters.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="register-email">Email</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <input id="register-email" name="email" class="form-control" type="email" autocomplete="email"
+            placeholder="you@example.com" [(ngModel)]="user.email" #email="ngModel" email required>
+        </div>
+        <small class="validation-message" *ngIf="email.invalid && email.touched">Enter a valid email address.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="register-password">Password</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-key" aria-hidden="true"></i>
+          <input id="register-password" name="password" class="form-control" [type]="showPassword ? 'text' : 'password'"
+            autocomplete="new-password" placeholder="At least 6 characters" [(ngModel)]="user.password"
+            #password="ngModel" minlength="6" required>
+          <button class="password-toggle" type="button" (click)="showPassword = !showPassword"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+            <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i>
+          </button>
+        </div>
+        <small class="validation-message" *ngIf="password.invalid && password.touched">Password must contain at least 6
+          characters.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm-password">Confirm password</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <input id="confirm-password" name="confirmPassword" class="form-control"
+            [type]="showPassword ? 'text' : 'password'" autocomplete="new-password" placeholder="Repeat your password"
+            [(ngModel)]="confirmPassword" #confirmation="ngModel" required>
+        </div>
+        <small class="validation-message" *ngIf="confirmation.touched && !passwordsMatch">Passwords do not
+          match.</small>
+      </div>
+
+      <button class="register-button" type="submit" [disabled]="registerForm.invalid || !passwordsMatch || loading">
+        <span class="spinner-border spinner-border-sm" aria-hidden="true" *ngIf="loading"></span>
+        {{ loading ? 'Creating account...' : 'Create account' }}
+      </button>
+    </form>
+
+    <p class="auth-switch">Already have an account? <a routerLink="/auth/login">Login</a></p>
+  </div>
+</section>

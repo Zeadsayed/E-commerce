@@ -1,0 +1,43 @@
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="brand" routerLink="/products" aria-label="Market home">
+        <span class="brand-mark"><i class="fa-solid fa-bag-shopping"></i></span>
+        <span>Market</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation"
+        aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavigation">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input type="search" [(ngModel)]="searchTerm" (input)="search($event)" placeholder="Search products..."
+            aria-label="Search products">
+        </div>
+
+        <div class="nav-actions">
+          <a class="nav-link" routerLink="/products" routerLinkActive="active-link">
+            <i class="fa-solid fa-store"></i><span>Products</span>
+          </a>
+          <a class="nav-link cart-link" routerLink="/cart" routerLinkActive="active-link">
+            <i class="fa-solid fa-cart-shopping"></i><span>Cart</span>
+            <span class="cart-count">{{ (cartCount$ | async) || 0 }}</span>
+          </a>
+
+          <ng-container *ngIf="isAuthenticated$ | async; else loggedOut">
+            <span class="status-pill"><i class="fa-solid fa-circle-check"></i> Signed in</span>
+            <button class="account-action" type="button" (click)="logout()">Logout</button>
+          </ng-container>
+
+          <ng-template #loggedOut>
+            <a class="account-action ghost" routerLink="/auth/login">Login</a>
+            <a class="account-action" routerLink="/auth/register">Register</a>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

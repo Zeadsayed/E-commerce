@@ -1,0 +1,62 @@
+<section class="login-page">
+  <div class="login-card">
+    <div class="login-heading">
+      <span class="lock-icon" aria-hidden="true">
+        <i class="fa-solid fa-lock"></i>
+      </span>
+      <div>
+        <p class="eyebrow">Welcome back</p>
+        <h1>Login to your account</h1>
+      </div>
+    </div>
+
+    <p class="login-copy">Sign in to complete your order. You can browse products and manage your cart without an
+      account.</p>
+
+    <div class="alert alert-warning" *ngIf="showCheckoutNotice">
+      Please log in before checking out.
+    </div>
+
+    <div class="alert alert-success" *ngIf="registrationSuccessful">
+      Your account was created. You can log in now.
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          <input id="username" name="username" class="form-control" type="text" autocomplete="username"
+            placeholder="Enter your username" [(ngModel)]="credentials.username" #username="ngModel" required>
+        </div>
+        <small class="validation-message" *ngIf="username.invalid && username.touched">Username is required.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-key" aria-hidden="true"></i>
+          <input id="password" name="password" class="form-control" [type]="showPassword ? 'text' : 'password'"
+            autocomplete="current-password" placeholder="Enter your password" [(ngModel)]="credentials.password"
+            #password="ngModel" required>
+          <button class="password-toggle" type="button" (click)="showPassword = !showPassword"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+            <i class="fa-solid" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i>
+          </button>
+        </div>
+        <small class="validation-message" *ngIf="password.invalid && password.touched">Password is required.</small>
+      </div>
+
+      <button class="login-button" type="submit" [disabled]="loginForm.invalid || loading">
+        <span class="spinner-border spinner-border-sm" aria-hidden="true" *ngIf="loading"></span>
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
+
+    <p class="auth-switch">New to Market? <a routerLink="/auth/register">Create an account</a></p>
+  </div>
+</section>

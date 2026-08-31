@@ -1,0 +1,38 @@
+<section class="catalog-page">
+  <div class="catalog-hero">
+    <div>
+      <span class="eyebrow">Curated for everyday life</span>
+      <h1>Find something you’ll love</h1>
+      <p>Explore quality fashion, jewelry, and electronics in one simple marketplace.</p>
+    </div>
+    <div class="hero-stat">
+      <strong>{{ products.length }}</strong>
+      <span>products ready to explore</span>
+    </div>
+  </div>
+
+  <div class="catalog-toolbar">
+    <div>
+      <span class="section-label">Our collection</span>
+      <h2>{{ selectedCategory === 'all' ? 'All products' : selectedCategory }}</h2>
+    </div>
+    <app-select [data]="categories" [title]="'Shop by category'" (selectedValue)="filterCategory($event)"></app-select>
+  </div>
+
+  <div class="notice" *ngIf="notice"><i class="fa-solid fa-circle-check"></i> {{ notice }}</div>
+
+  <div class="product-grid" *ngIf="!loading && products.length">
+    <app-product-card *ngFor="let product of products" [data]="product" (item)="addToCart($event)"></app-product-card>
+  </div>
+
+  <div class="loading-state" *ngIf="loading">
+    <app-spinner></app-spinner>
+    <p>Loading the collection...</p>
+  </div>
+
+  <div class="empty-state" *ngIf="!loading && !products.length">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <h3>No products found</h3>
+    <p>Try another search or category.</p>
+  </div>
+</section>

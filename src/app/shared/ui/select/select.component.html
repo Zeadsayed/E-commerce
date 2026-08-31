@@ -1,0 +1,10 @@
+
+<label for="category-select">{{ title }}</label>
+<div class="select-wrap">
+  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+  <select id="category-select" (change)="detectChanges($event)">
+    <option value="all" selected>All categories</option>
+    <option [value]="option" *ngFor="let option of data">{{ option }}</option>
+  </select>
+  <i class="fa-solid fa-chevron-down caret" aria-hidden="true"></i>
+</div>

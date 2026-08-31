@@ -1,0 +1,7 @@
+:host { display: block; min-width: 230px; }
+label { display: block; margin-bottom: 7px; color: var(--ink-600); font-size: 12px; font-weight: 700; }
+.select-wrap { position: relative; }
+.select-wrap > i:first-child { position: absolute; top: 50%; left: 14px; color: var(--brand-700); transform: translateY(-50%); }
+select { width: 100%; height: 46px; padding: 0 42px; border: 1px solid var(--line); border-radius: 11px; outline: none; color: var(--ink-900); background: #fff; font-weight: 600; text-transform: capitalize; appearance: none; }
+select:focus { border-color: var(--brand-700); box-shadow: 0 0 0 3px rgba(149,11,11,.1); }
+.caret { position: absolute; top: 50%; right: 14px; color: #9b8989; font-size: 11px; transform: translateY(-50%); pointer-events: none; }

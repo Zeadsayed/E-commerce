@@ -1,0 +1,24 @@
+<article class="product-card">
+  <a class="product-image" [routerLink]="['/details', data.id]">
+    <img [src]="data.image" [alt]="data.title">
+    <span class="category-badge">{{ data.category }}</span>
+  </a>
+
+  <div class="product-body">
+    <div class="product-meta">
+      <span>{{ data.category }}</span>
+      <div class="rating" *ngIf="data.rating">
+        <i class="fa-solid fa-star"></i>
+        <strong>{{ data.rating.rate }}</strong>
+        <small>({{ data.rating.count }})</small>
+      </div>
+    </div>
+    <a class="product-title" [routerLink]="['/details', data.id]">{{ data.title }}</a>
+    <p>{{ data.description }}</p>
+
+    <div class="product-footer">
+      <div class="price"><small>Price</small><strong>{{ data.price | number:'1.2-2' }} <span>L.E</span></strong></div>
+      <button class="add-button" type="button" (click)="add()"><i class="fa-solid fa-cart-plus"></i><span>Add to cart</span></button>
+    </div>
+  </div>
+</article>

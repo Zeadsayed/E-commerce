@@ -1,0 +1,56 @@
+<section class="details-page">
+  <a class="back-link" routerLink="/products"><i class="fa-solid fa-arrow-left"></i> Back to products</a>
+
+  <div class="loading-state" *ngIf="loading"><app-spinner></app-spinner>
+    <p>Loading product details...</p>
+  </div>
+
+  <article class="product-layout" *ngIf="!loading && data as product">
+    <div class="gallery-panel">
+      <span class="category-chip">{{ product.category }}</span>
+      <div class="image-frame"><img [src]="product.image" [alt]="product.title"></div>
+      <div class="gallery-note"><i class="fa-solid fa-magnifying-glass-plus"></i> Product image shown in full</div>
+    </div>
+
+    <div class="product-info">
+      <span class="eyebrow">{{ product.category }}</span>
+      <h1>{{ product.title }}</h1>
+
+      <div class="rating-row" *ngIf="product.rating">
+        <span class="stars"><i class="fa-solid fa-star"></i> {{ product.rating.rate }}</span>
+        <span class="divider"></span>
+        <span>{{ product.rating.count }} verified ratings</span>
+      </div>
+
+      <p class="description">{{ product.description }}</p>
+
+      <div class="price-block">
+        <span>Current price</span>
+        <strong>{{ product.price | number:'1.2-2' }} <small>L.E</small></strong>
+        <em>Tax included</em>
+      </div>
+
+      <div class="purchase-row">
+        <div class="quantity-picker">
+          <button type="button" (click)="changeQuantity(-1)" aria-label="Decrease quantity">−</button>
+          <input type="number" [(ngModel)]="quantity" min="1" aria-label="Quantity">
+          <button type="button" (click)="changeQuantity(1)" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="cart-button" type="button" (click)="addToCart()"><i class="fa-solid fa-cart-plus"></i> Add to
+          cart</button>
+      </div>
+
+      <div class="added-message" *ngIf="added"><i class="fa-solid fa-circle-check"></i> Product added to your cart.
+      </div>
+
+      <div class="benefits">
+        <div><i class="fa-solid fa-truck-fast"></i><span><strong>Free delivery</strong><small>On every
+              order</small></span></div>
+        <div><i class="fa-solid fa-rotate-left"></i><span><strong>Easy returns</strong><small>Simple and
+              convenient</small></span></div>
+        <div><i class="fa-solid fa-shield-halved"></i><span><strong>Secure checkout</strong><small>Protected
+              purchase</small></span></div>
+      </div>
+    </div>
+  </article>
+</section>
